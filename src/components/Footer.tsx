@@ -24,8 +24,8 @@ const Footer = () => {
   return (
     <footer className="w-full py-8 mt-12 border-t border-gray-800 bg-black text-white">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col items-center justify-center">
-          <div className="flex space-x-6 mb-6">
+        <div className="flex flex-col md:flex-row md:justify-between md:items-center">
+          <div className="flex space-x-6 mb-4 md:mb-0">
             {socialLinks.map((link) => (
               <a
                 key={link.name}
