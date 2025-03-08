@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { ChevronDown, ChevronUp } from 'lucide-react';
@@ -69,7 +68,7 @@ const EventSection = ({ title, subtitle, events, id }: EventSectionProps) => {
           <p className="mt-3 text-lg text-muted-foreground max-w-3xl">
             {isExpanded ? (
               subtitle === "Future Gatherings" 
-                ? "Join us at these upcoming community events. RSVP to secure your spot!"
+                ? ""
                 : "Take a look at our previous events. Don't worry if you missed them - more are coming soon!"
             ) : (
               "Section collapsed. Click to expand."
