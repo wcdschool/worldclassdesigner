@@ -76,6 +76,12 @@ const EventCard = ({ event, index }: EventCardProps) => {
               <span>Paris</span>
             </div>
           )}
+          {event.location.includes("Montpellier") && (
+            <div className="absolute top-3 left-3 flex items-center bg-black/70 text-white px-2 py-1 rounded-full text-xs font-medium">
+              <MapPin className="h-3 w-3 mr-1" />
+              <span>Montpellier</span>
+            </div>
+          )}
         </div>
         
         {/* Categories */}
