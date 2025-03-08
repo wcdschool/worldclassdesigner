@@ -52,10 +52,10 @@ const EventCard = ({ event, index }: EventCardProps) => {
     <div
       ref={cardRef}
       className={cn(
-        "glass-card rounded-xl overflow-hidden transition-all duration-500 hover-float",
-        "transform shadow-lg h-full flex flex-col",
+        "bg-white dark:bg-black/90 rounded-xl overflow-hidden transition-all duration-500 hover-float",
+        "transform shadow-lg h-full flex flex-col border border-gray-200 dark:border-gray-800",
         isVisible ? "animate-scale-in" : "opacity-0 translate-y-10",
-        isHovered && "ring-1 ring-primary/20"
+        isHovered && "ring-1 ring-black dark:ring-white/20"
       )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -68,12 +68,12 @@ const EventCard = ({ event, index }: EventCardProps) => {
           )}
           style={{ backgroundImage: `url(${event.image || 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80'})` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
         
         {/* Categories */}
         <div className="absolute bottom-3 left-3 flex flex-wrap gap-2">
           {event.categories?.map((category) => (
-            <Badge key={category} variant="secondary" className="text-xs font-normal">
+            <Badge key={category} variant="secondary" className="text-xs font-normal bg-black/70 text-white dark:bg-white/10">
               {category}
             </Badge>
           ))}
@@ -84,30 +84,32 @@ const EventCard = ({ event, index }: EventCardProps) => {
         <h3 className="text-xl font-medium leading-tight mb-2">{event.title}</h3>
         
         <div className="space-y-3 mb-4 text-sm">
-          <div className="flex items-center text-muted-foreground">
+          <div className="flex items-center text-gray-500 dark:text-gray-400">
             <Calendar className="h-4 w-4 mr-2 flex-shrink-0" />
             <span>{event.date}</span>
           </div>
           
-          <div className="flex items-center text-muted-foreground">
+          <div className="flex items-center text-gray-500 dark:text-gray-400">
             <Clock className="h-4 w-4 mr-2 flex-shrink-0" />
             <span>{event.time}</span>
           </div>
           
-          <div className="flex items-center text-muted-foreground">
+          <div className="flex items-center text-gray-500 dark:text-gray-400">
             <MapPin className="h-4 w-4 mr-2 flex-shrink-0" />
             <span>{event.location}</span>
           </div>
         </div>
         
-        <p className="text-muted-foreground mb-5 text-sm line-clamp-3">{event.description}</p>
+        <p className="text-gray-600 dark:text-gray-400 mb-5 text-sm line-clamp-3">{event.description}</p>
         
         <div className="mt-auto">
           <Button
             onClick={handleRSVP}
             className={cn(
               "w-full transition-all duration-300",
-              event.isPast ? "bg-secondary text-secondary-foreground hover:bg-secondary/80" : "bg-primary text-primary-foreground hover:bg-primary/90"
+              event.isPast 
+                ? "bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700" 
+                : "bg-black text-white hover:bg-black/90 dark:bg-white dark:text-black dark:hover:bg-white/90"
             )}
             disabled={event.isPast}
           >
