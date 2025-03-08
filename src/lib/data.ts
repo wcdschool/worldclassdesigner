@@ -15,7 +15,7 @@ export const events: Event[] = [
     isFree: true,
     speaker: {
       name: "Julie Chabin",
-      title: "Freelance Product Designer, former Head of Product Design at Product Hunt"
+      title: "Freelance Product Designer, Ex: Head of Product Design at Product Hunt"
     }
   },
   {
