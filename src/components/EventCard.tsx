@@ -62,8 +62,8 @@ const EventCard = ({ event, index }: EventCardProps) => {
     <div
       ref={cardRef}
       className={cn(
-        "bg-white dark:bg-black/90 rounded-xl overflow-hidden transition-all duration-500 hover-float",
-        "transform shadow-lg h-full flex flex-col border border-gray-200 dark:border-gray-800",
+        "bg-white dark:bg-black/90 rounded-xl overflow-hidden transition-all duration-500 hover-float shadow-float",
+        "transform h-full flex flex-col border border-gray-200 dark:border-gray-800",
         isVisible ? "animate-scale-in" : "opacity-0 translate-y-10",
         isHovered && "ring-1 ring-black dark:ring-white/20"
       )}
