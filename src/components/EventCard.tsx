@@ -82,6 +82,13 @@ const EventCard = ({ event, index }: EventCardProps) => {
               <span>Montpellier</span>
             </div>
           )}
+          
+          {/* Free badge */}
+          {event.isFree && (
+            <div className="absolute top-3 right-3">
+              <Badge variant="default" className="bg-green-500 hover:bg-green-600">Free</Badge>
+            </div>
+          )}
         </div>
         
         {/* Categories */}

@@ -9,4 +9,5 @@ export interface Event {
   image?: string;
   isPast: boolean;
   categories?: string[];
+  isFree?: boolean;
 }
