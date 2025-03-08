@@ -6,6 +6,7 @@ import { Calendar, Clock, MapPin, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { toast } from '@/hooks/use-toast';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 
 interface EventCardProps {
   event: Event;
@@ -122,7 +123,17 @@ const EventCard = ({ event, index }: EventCardProps) => {
           
           {event.speaker && (
             <div className="flex items-center text-gray-500 dark:text-gray-400">
-              <User className="h-4 w-4 mr-2 flex-shrink-0" />
+              {event.speaker.name === "Julie Chabin" ? (
+                <Avatar className="h-6 w-6 mr-2 flex-shrink-0 border border-gray-200 dark:border-gray-700">
+                  <AvatarImage 
+                    src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
+                    alt={event.speaker.name}
+                  />
+                  <AvatarFallback>{event.speaker.name.charAt(0)}</AvatarFallback>
+                </Avatar>
+              ) : (
+                <User className="h-4 w-4 mr-2 flex-shrink-0" />
+              )}
               <div>
                 <span className="font-medium text-black dark:text-white">{event.speaker.name}</span>
                 <span className="block text-xs mt-0.5">{event.speaker.title}</span>
