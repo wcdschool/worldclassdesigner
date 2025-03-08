@@ -2,7 +2,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Event } from '@/lib/types';
 import { cn } from '@/lib/utils';
-import { Calendar, Clock, MapPin } from 'lucide-react';
+import { Calendar, Clock, MapPin, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { toast } from '@/hooks/use-toast';
@@ -119,6 +119,16 @@ const EventCard = ({ event, index }: EventCardProps) => {
             <MapPin className="h-4 w-4 mr-2 flex-shrink-0" />
             <span>{event.location}</span>
           </div>
+          
+          {event.speaker && (
+            <div className="flex items-center text-gray-500 dark:text-gray-400">
+              <User className="h-4 w-4 mr-2 flex-shrink-0" />
+              <div>
+                <span className="font-medium text-black dark:text-white">{event.speaker.name}</span>
+                <span className="block text-xs mt-0.5">{event.speaker.title}</span>
+              </div>
+            </div>
+          )}
         </div>
         
         <p className="text-gray-600 dark:text-gray-400 mb-5 text-sm line-clamp-3">{event.description}</p>

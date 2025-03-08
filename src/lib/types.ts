@@ -10,4 +10,8 @@ export interface Event {
   isPast: boolean;
   categories?: string[];
   isFree?: boolean;
+  speaker?: {
+    name: string;
+    title: string;
+  };
 }
