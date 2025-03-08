@@ -43,7 +43,7 @@ const EventSection = ({ title, subtitle, events, id }: EventSectionProps) => {
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         )}>
           <div>
-            <h2 className="mt-1">{title}</h2>
+            <h2 className={cn("mt-1", id === "upcoming" && "font-montserrat")}>{title}</h2>
           </div>
           
           <p className="mt-3 text-lg text-muted-foreground max-w-3xl">
