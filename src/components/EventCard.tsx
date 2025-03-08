@@ -1,0 +1,122 @@
+
+import { useState, useRef, useEffect } from 'react';
+import { Event } from '@/lib/types';
+import { cn } from '@/lib/utils';
+import { Calendar, Clock, MapPin } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { toast } from '@/hooks/use-toast';
+
+interface EventCardProps {
+  event: Event;
+  index: number;
+}
+
+const EventCard = ({ event, index }: EventCardProps) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  const handleRSVP = () => {
+    toast({
+      title: "RSVP Successful!",
+      description: `You've registered for "${event.title}". We've sent details to your email.`,
+    });
+  };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            setIsVisible(true);
+          }, index * 100); // Staggered animation
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => {
+      if (cardRef.current) {
+        observer.unobserve(cardRef.current);
+      }
+    };
+  }, [index]);
+
+  return (
+    <div
+      ref={cardRef}
+      className={cn(
+        "glass-card rounded-xl overflow-hidden transition-all duration-500 hover-float",
+        "transform shadow-lg h-full flex flex-col",
+        isVisible ? "animate-scale-in" : "opacity-0 translate-y-10",
+        isHovered && "ring-1 ring-primary/20"
+      )}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div className="relative aspect-video overflow-hidden">
+        <div 
+          className={cn(
+            "absolute inset-0 bg-cover bg-center transition-transform duration-700",
+            isHovered ? "scale-105" : "scale-100"
+          )}
+          style={{ backgroundImage: `url(${event.image || 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80'})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+        
+        {/* Categories */}
+        <div className="absolute bottom-3 left-3 flex flex-wrap gap-2">
+          {event.categories?.map((category) => (
+            <Badge key={category} variant="secondary" className="text-xs font-normal">
+              {category}
+            </Badge>
+          ))}
+        </div>
+      </div>
+      
+      <div className="p-5 flex-grow flex flex-col">
+        <h3 className="text-xl font-medium leading-tight mb-2">{event.title}</h3>
+        
+        <div className="space-y-3 mb-4 text-sm">
+          <div className="flex items-center text-muted-foreground">
+            <Calendar className="h-4 w-4 mr-2 flex-shrink-0" />
+            <span>{event.date}</span>
+          </div>
+          
+          <div className="flex items-center text-muted-foreground">
+            <Clock className="h-4 w-4 mr-2 flex-shrink-0" />
+            <span>{event.time}</span>
+          </div>
+          
+          <div className="flex items-center text-muted-foreground">
+            <MapPin className="h-4 w-4 mr-2 flex-shrink-0" />
+            <span>{event.location}</span>
+          </div>
+        </div>
+        
+        <p className="text-muted-foreground mb-5 text-sm line-clamp-3">{event.description}</p>
+        
+        <div className="mt-auto">
+          <Button
+            onClick={handleRSVP}
+            className={cn(
+              "w-full transition-all duration-300",
+              event.isPast ? "bg-secondary text-secondary-foreground hover:bg-secondary/80" : "bg-primary text-primary-foreground hover:bg-primary/90"
+            )}
+            disabled={event.isPast}
+          >
+            {event.isPast ? 'Event Ended' : 'RSVP Now'}
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default EventCard;
