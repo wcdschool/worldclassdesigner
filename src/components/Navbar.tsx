@@ -17,21 +17,21 @@ const Navbar = () => {
   return (
     <nav
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out px-4 sm:px-6 lg:px-8',
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out px-0',
         isScrolled
           ? 'py-2 bg-black/80 backdrop-blur-md shadow-md'
-          : 'py-6 bg-transparent'
+          : 'py-0 bg-transparent'
       )}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-center">
+      <div className="w-full">
         <a 
           href="#" 
-          className="transition-all duration-300"
+          className="block w-full transition-all duration-300"
         >
           <img 
             src="/lovable-uploads/cf3e8c0c-1af2-4f27-bb73-063b5c9c0b2d.png" 
             alt="World Class Designer Logo" 
-            className="h-16 sm:h-20 w-auto"
+            className="w-full h-auto"
           />
         </a>
       </div>
