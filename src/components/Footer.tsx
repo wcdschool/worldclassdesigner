@@ -25,7 +25,7 @@ const Footer = () => {
     <footer className="w-full py-8 mt-12 border-t border-gray-800 bg-black text-white">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row md:justify-between md:items-center">
-          <div className="flex space-x-6 mb-4 md:mb-0">
+          <div className="flex justify-center md:justify-start space-x-6 mb-4 md:mb-0">
             {socialLinks.map((link) => (
               <a
                 key={link.name}
@@ -43,7 +43,7 @@ const Footer = () => {
             ))}
           </div>
           
-          <div className="text-sm text-gray-400">
+          <div className="text-sm text-gray-400 text-center md:text-right">
             &copy; {new Date().getFullYear()} World Class Designer. All rights reserved.
           </div>
         </div>
