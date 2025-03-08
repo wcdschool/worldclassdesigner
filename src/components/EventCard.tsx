@@ -68,7 +68,15 @@ const EventCard = ({ event, index }: EventCardProps) => {
           )}
           style={{ backgroundImage: `url(${event.image || 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80'})` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent">
+          {/* Location tag */}
+          {event.location.includes("Paris") && (
+            <div className="absolute top-3 left-3 flex items-center bg-black/70 text-white px-2 py-1 rounded-full text-xs font-medium">
+              <MapPin className="h-3 w-3 mr-1" />
+              <span>Paris</span>
+            </div>
+          )}
+        </div>
         
         {/* Categories */}
         <div className="absolute bottom-3 left-3 flex flex-wrap gap-2">
