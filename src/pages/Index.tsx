@@ -37,10 +37,10 @@ const Index = () => {
   };
   
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col items-center">
       <Navbar />
       
-      <div className="bg-background pt-12 md:pt-12">
+      <div className="bg-background pt-12 md:pt-12 w-full">
         <EventSection 
           id="upcoming"
           title="Upcoming Events" 
