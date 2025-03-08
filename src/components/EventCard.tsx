@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { toast } from '@/hooks/use-toast';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
+import confetti from 'canvas-confetti';
 
 interface EventCardProps {
   event: Event;
@@ -19,6 +20,14 @@ const EventCard = ({ event, index }: EventCardProps) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const handleRSVP = () => {
+    // Trigger confetti effect
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 },
+      colors: ['#f44336', '#e91e63', '#9c27b0', '#673ab7', '#3f51b5', '#2196f3']
+    });
+    
     toast({
       title: "RSVP Successful!",
       description: `You've registered for "${event.title}". We've sent details to your email.`,
