@@ -39,14 +39,14 @@ const EventSection = ({ title, subtitle, events, id }: EventSectionProps) => {
     <section id={id} className="py-16 scroll-mt-24">
       <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div className={cn(
-          "mb-12 transition-all duration-700", 
+          "mb-12 transition-all duration-700 text-center", 
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         )}>
           <div>
             <h2 className={cn("mt-1", id === "upcoming" && "font-montserrat")}>{title}</h2>
           </div>
           
-          <p className="mt-3 text-lg text-muted-foreground max-w-3xl">
+          <p className="mt-3 text-lg text-muted-foreground max-w-3xl mx-auto">
             {subtitle === "Future Gatherings" 
               ? ""
               : "Take a look at our previous events. Don't worry if you missed them - more are coming soon!"}
