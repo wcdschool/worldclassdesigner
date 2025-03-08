@@ -1,9 +1,7 @@
-
 import { useEffect, useRef } from 'react';
 import { ArrowUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Navbar from '@/components/Navbar';
-import Hero from '@/components/Hero';
 import EventSection from '@/components/EventSection';
 import { events } from '@/lib/data';
 import { Event } from '@/lib/types';
@@ -41,9 +39,8 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <Navbar />
-      <Hero />
       
-      <div className="bg-background">
+      <div className="bg-background pt-24">
         <EventSection 
           id="upcoming"
           title="Upcoming Events" 
