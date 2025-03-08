@@ -23,7 +23,7 @@ const Navbar = () => {
           : 'py-0 bg-transparent'
       )}
     >
-      <div className="w-full">
+      <div className="w-full mx-4 md:mx-16">
         <a 
           href="#" 
           className="block w-full transition-all duration-300"
@@ -31,7 +31,7 @@ const Navbar = () => {
           <img 
             src="/lovable-uploads/cf3e8c0c-1af2-4f27-bb73-063b5c9c0b2d.png" 
             alt="World Class Designer Logo" 
-            className="w-full h-auto"
+            className="w-full h-auto m-4"
           />
         </a>
       </div>
