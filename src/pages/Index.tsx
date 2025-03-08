@@ -4,6 +4,7 @@ import { ArrowUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Navbar from '@/components/Navbar';
 import EventSection from '@/components/EventSection';
+import Footer from '@/components/Footer';
 import { events } from '@/lib/data';
 import { Event } from '@/lib/types';
 
@@ -37,10 +38,10 @@ const Index = () => {
   };
   
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col">
       <Navbar />
       
-      <div className="bg-background pt-12 md:pt-12">
+      <div className="bg-background pt-12 md:pt-12 flex-grow">
         <EventSection 
           id="upcoming"
           title="Upcoming Events" 
@@ -48,6 +49,8 @@ const Index = () => {
           events={upcomingEvents} 
         />
       </div>
+      
+      <Footer />
       
       <Button
         ref={scrollButtonRef}
