@@ -40,7 +40,7 @@ const Index = () => {
     <div className="min-h-screen">
       <Navbar />
       
-      <div className="bg-background pt-24">
+      <div className="bg-background pt-32 md:pt-36">
         <EventSection 
           id="upcoming"
           title="Upcoming Events" 
