@@ -36,24 +36,24 @@ const EventSection = ({ title, subtitle, events, id }: EventSectionProps) => {
   }, [id]);
   
   return (
-    <section id={id} className="py-12 scroll-mt-24">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <section id={id} className="py-16 scroll-mt-24">
+      <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div className={cn(
-          "mb-8 transition-all duration-700", 
+          "mb-12 transition-all duration-700", 
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         )}>
           <div>
-            <h2 className="text-2xl font-medium">{title}</h2>
+            <h2 className="mt-1">{title}</h2>
           </div>
           
-          <p className="mt-2 text-base text-muted-foreground max-w-3xl mx-auto">
+          <p className="mt-3 text-lg text-muted-foreground max-w-3xl">
             {subtitle === "Future Gatherings" 
               ? ""
               : "Take a look at our previous events. Don't worry if you missed them - more are coming soon!"}
           </p>
         </div>
         
-        <div className="event-grid mx-auto">
+        <div className="event-grid">
           {events.map((event, index) => (
             <EventCard key={event.id} event={event} index={index} />
           ))}

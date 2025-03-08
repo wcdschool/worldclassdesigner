@@ -52,15 +52,15 @@ const EventCard = ({ event, index }: EventCardProps) => {
     <div
       ref={cardRef}
       className={cn(
-        "bg-white dark:bg-black/90 rounded-lg overflow-hidden transition-all duration-500 hover-float",
-        "transform shadow-md h-full flex flex-col border border-gray-200 dark:border-gray-800",
+        "bg-white dark:bg-black/90 rounded-xl overflow-hidden transition-all duration-500 hover-float",
+        "transform shadow-lg h-full flex flex-col border border-gray-200 dark:border-gray-800",
         isVisible ? "animate-scale-in" : "opacity-0 translate-y-10",
         isHovered && "ring-1 ring-black dark:ring-white/20"
       )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="relative aspect-[16/9] overflow-hidden">
+      <div className="relative aspect-video overflow-hidden">
         <div 
           className={cn(
             "absolute inset-0 bg-cover bg-center transition-transform duration-700",
@@ -71,13 +71,13 @@ const EventCard = ({ event, index }: EventCardProps) => {
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent">
           {/* Location tag */}
           {event.location.includes("Paris") && (
-            <div className="absolute top-2 left-2 flex items-center bg-black/70 text-white px-2 py-0.5 rounded-full text-xs font-medium">
+            <div className="absolute top-3 left-3 flex items-center bg-black/70 text-white px-2 py-1 rounded-full text-xs font-medium">
               <MapPin className="h-3 w-3 mr-1" />
               <span>Paris</span>
             </div>
           )}
           {event.location.includes("Montpellier") && (
-            <div className="absolute top-2 left-2 flex items-center bg-black/70 text-white px-2 py-0.5 rounded-full text-xs font-medium">
+            <div className="absolute top-3 left-3 flex items-center bg-black/70 text-white px-2 py-1 rounded-full text-xs font-medium">
               <MapPin className="h-3 w-3 mr-1" />
               <span>Montpellier</span>
             </div>
@@ -85,7 +85,7 @@ const EventCard = ({ event, index }: EventCardProps) => {
         </div>
         
         {/* Categories */}
-        <div className="absolute bottom-2 left-2 flex flex-wrap gap-1">
+        <div className="absolute bottom-3 left-3 flex flex-wrap gap-2">
           {event.categories?.map((category) => (
             <Badge key={category} variant="secondary" className="text-xs font-normal bg-black/70 text-white dark:bg-white/10">
               {category}
@@ -94,33 +94,33 @@ const EventCard = ({ event, index }: EventCardProps) => {
         </div>
       </div>
       
-      <div className="p-3 flex-grow flex flex-col">
-        <h3 className="text-base font-medium leading-tight mb-2">{event.title}</h3>
+      <div className="p-5 flex-grow flex flex-col">
+        <h3 className="text-xl font-medium leading-tight mb-2">{event.title}</h3>
         
-        <div className="space-y-2 mb-3 text-xs">
+        <div className="space-y-3 mb-4 text-sm">
           <div className="flex items-center text-gray-500 dark:text-gray-400">
-            <Calendar className="h-3 w-3 mr-1.5 flex-shrink-0" />
+            <Calendar className="h-4 w-4 mr-2 flex-shrink-0" />
             <span>{event.date}</span>
           </div>
           
           <div className="flex items-center text-gray-500 dark:text-gray-400">
-            <Clock className="h-3 w-3 mr-1.5 flex-shrink-0" />
+            <Clock className="h-4 w-4 mr-2 flex-shrink-0" />
             <span>{event.time}</span>
           </div>
           
           <div className="flex items-center text-gray-500 dark:text-gray-400">
-            <MapPin className="h-3 w-3 mr-1.5 flex-shrink-0" />
+            <MapPin className="h-4 w-4 mr-2 flex-shrink-0" />
             <span>{event.location}</span>
           </div>
         </div>
         
-        <p className="text-gray-600 dark:text-gray-400 mb-3 text-xs line-clamp-2">{event.description}</p>
+        <p className="text-gray-600 dark:text-gray-400 mb-5 text-sm line-clamp-3">{event.description}</p>
         
         <div className="mt-auto">
           <Button
             onClick={handleRSVP}
             className={cn(
-              "w-full transition-all duration-300 text-xs h-8",
+              "w-full transition-all duration-300",
               event.isPast 
                 ? "bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700" 
                 : "bg-black text-white hover:bg-black/90 dark:bg-white dark:text-black dark:hover:bg-white/90"
