@@ -142,7 +142,7 @@ const EventCard = ({ event, index }: EventCardProps) => {
           )}
         </div>
         
-        <p className="text-gray-600 dark:text-gray-400 mb-5 text-sm line-clamp-3">{event.description}</p>
+        <p className="text-gray-600 dark:text-gray-400 mb-5 text-sm line-clamp-3 hidden sm:block">{event.description}</p>
         
         <div className="mt-auto">
           <Button
