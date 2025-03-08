@@ -35,10 +35,13 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <a 
           href="#" 
-          className="text-2xl font-medium tracking-tight transition-all duration-300"
+          className="transition-all duration-300"
         >
-          <span className="text-primary">Meetup</span>
-          <span className="font-light">Events</span>
+          <img 
+            src="/lovable-uploads/976f1608-fe4b-4980-a5cc-c39da01c3508.png" 
+            alt="World Class Designer Logo" 
+            className="h-12 w-auto"
+          />
         </a>
 
         {/* Desktop Navigation */}
