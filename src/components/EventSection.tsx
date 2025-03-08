@@ -43,9 +43,6 @@ const EventSection = ({ title, subtitle, events, id }: EventSectionProps) => {
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         )}>
           <div>
-            <span className="text-sm text-primary font-medium uppercase tracking-wider">
-              {subtitle}
-            </span>
             <h2 className="mt-1">{title}</h2>
           </div>
           
