@@ -5,7 +5,7 @@ export const events: Event[] = [
   {
     id: "2",
     title: "What Makes a World-Class Designer?",
-    date: "June 22, 2024",
+    date: "April 3, 2024",
     time: "06:30 PM - 08:00 PM",
     location: "Montpellier, France (TBD)",
     description: "Join us for an insightful discussion on the qualities, skills, and mindset that separate good designers from truly world-class ones.",
@@ -21,7 +21,7 @@ export const events: Event[] = [
   {
     id: "1",
     title: "What Makes a World-Class Designer?",
-    date: "June 15, 2024",
+    date: "April 8, 2024",
     time: "06:30 PM - 08:00 PM",
     location: "Paris, France (TBD)",
     description: "Join us for an insightful discussion on the qualities, skills, and mindset that separate good designers from truly world-class ones.",
