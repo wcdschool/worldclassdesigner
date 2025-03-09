@@ -10,6 +10,7 @@ export interface Event {
   isPast: boolean;
   categories?: string[];
   isFree?: boolean;
+  meetupUrl?: string;
   speaker?: {
     name: string;
     title: string;

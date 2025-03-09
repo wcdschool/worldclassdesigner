@@ -2,7 +2,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Event } from '@/lib/types';
 import { cn } from '@/lib/utils';
-import { Calendar, Clock, MapPin, User } from 'lucide-react';
+import { Calendar, Clock, MapPin, User, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { toast } from '@/hooks/use-toast';
@@ -32,6 +32,11 @@ const EventCard = ({ event, index }: EventCardProps) => {
       title: "RSVP Successful!",
       description: `You've registered for "${event.title}". We've sent details to your email.`,
     });
+    
+    // If there's a meetup URL, open it in a new tab
+    if (event.meetupUrl) {
+      window.open(event.meetupUrl, '_blank', 'noopener,noreferrer');
+    }
   };
 
   useEffect(() => {
@@ -157,7 +162,7 @@ const EventCard = ({ event, index }: EventCardProps) => {
           <Button
             onClick={handleRSVP}
             className={cn(
-              "w-full transition-all duration-300",
+              "w-full transition-all duration-300 gap-2", // Added gap-2 for spacing between text and icon
               event.isPast 
                 ? "bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700" 
                 : "bg-black text-white hover:bg-black/90 dark:bg-white dark:text-black dark:hover:bg-white/90"
@@ -165,6 +170,7 @@ const EventCard = ({ event, index }: EventCardProps) => {
             disabled={event.isPast}
           >
             {event.isPast ? 'Event Ended' : 'RSVP Now'}
+            {!event.isPast && <ExternalLink className="h-4 w-4" />}
           </Button>
         </div>
       </div>
