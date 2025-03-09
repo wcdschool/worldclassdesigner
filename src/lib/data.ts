@@ -9,7 +9,7 @@ export const events: Event[] = [
     time: "06:30 PM - 08:00 PM",
     location: "Montpellier, France (TBD)",
     description: "Join us for our inaugural World Class Designer meetup in Montpellier! We'll explore what separates good designers from truly exceptional ones through insightful discussions, practical examples, and networking opportunities with local design professionals.",
-    image: "public/lovable-uploads/ce83ed9e-7892-4dca-94a5-95c15e115704.png",
+    image: "/lovable-uploads/ce83ed9e-7892-4dca-94a5-95c15e115704.png",
     isPast: false,
     categories: [],
     isFree: true,
