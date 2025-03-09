@@ -16,6 +16,7 @@ interface EventCardProps {
 
 const EventCard = ({ event, index }: EventCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [imageError, setImageError] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -63,6 +64,17 @@ const EventCard = ({ event, index }: EventCardProps) => {
     };
   }, [index]);
 
+  // Fallback image for when the main image fails to load
+  const fallbackImage = 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80';
+  
+  const handleImageError = () => {
+    console.log("Image failed to load:", event.image);
+    setImageError(true);
+  };
+
+  // Determine which image URL to use
+  const imageUrl = imageError || !event.image ? fallbackImage : event.image;
+
   return (
     <div
       ref={cardRef}
@@ -76,12 +88,22 @@ const EventCard = ({ event, index }: EventCardProps) => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className="relative aspect-video overflow-hidden">
+        <img 
+          src={imageUrl}
+          alt={event.title}
+          className={cn(
+            "absolute inset-0 h-full w-full object-cover transition-transform duration-700",
+            isHovered ? "scale-105" : "scale-100"
+          )}
+          onError={handleImageError}
+          style={{ display: 'none' }} // Hidden image to preload and check for errors
+        />
         <div 
           className={cn(
             "absolute inset-0 bg-cover bg-center transition-transform duration-700",
             isHovered ? "scale-105" : "scale-100"
           )}
-          style={{ backgroundImage: `url(${event.image || 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80'})` }}
+          style={{ backgroundImage: `url(${imageUrl})` }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent">
           {/* Location tag */}
@@ -162,7 +184,7 @@ const EventCard = ({ event, index }: EventCardProps) => {
           <Button
             onClick={handleRSVP}
             className={cn(
-              "w-full transition-all duration-300 gap-2", // Added gap-2 for spacing between text and icon
+              "w-full transition-all duration-300 gap-2",
               event.isPast 
                 ? "bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700" 
                 : "bg-black text-white hover:bg-black/90 dark:bg-white dark:text-black dark:hover:bg-white/90"
