@@ -14,5 +14,4 @@ export interface Event {
     name: string;
     title: string;
   };
-  meetupUrl?: string;
 }

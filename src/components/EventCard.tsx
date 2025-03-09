@@ -2,7 +2,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Event } from '@/lib/types';
 import { cn } from '@/lib/utils';
-import { Calendar, Clock, MapPin, User, ExternalLink } from 'lucide-react';
+import { Calendar, Clock, MapPin, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { toast } from '@/hooks/use-toast';
@@ -20,22 +20,18 @@ const EventCard = ({ event, index }: EventCardProps) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const handleRSVP = () => {
-    if (event.meetupUrl) {
-      window.open(event.meetupUrl, '_blank');
-    } else {
-      // Trigger confetti effect
-      confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 },
-        colors: ['#f44336', '#e91e63', '#9c27b0', '#673ab7', '#3f51b5', '#2196f3']
-      });
-      
-      toast({
-        title: "RSVP Successful!",
-        description: `You've registered for "${event.title}". We've sent details to your email.`,
-      });
-    }
+    // Trigger confetti effect
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 },
+      colors: ['#f44336', '#e91e63', '#9c27b0', '#673ab7', '#3f51b5', '#2196f3']
+    });
+    
+    toast({
+      title: "RSVP Successful!",
+      description: `You've registered for "${event.title}". We've sent details to your email.`,
+    });
   };
 
   useEffect(() => {
@@ -153,20 +149,6 @@ const EventCard = ({ event, index }: EventCardProps) => {
               </div>
             </div>
           )}
-          
-          {event.meetupUrl && (
-            <div className="flex items-center text-gray-500 dark:text-gray-400">
-              <ExternalLink className="h-4 w-4 mr-2 flex-shrink-0" />
-              <a 
-                href={event.meetupUrl} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-blue-600 dark:text-blue-400 hover:underline"
-              >
-                Meetup Page
-              </a>
-            </div>
-          )}
         </div>
         
         <p className="text-gray-600 dark:text-gray-400 mb-5 text-sm line-clamp-3 hidden sm:block">{event.description}</p>
@@ -182,7 +164,7 @@ const EventCard = ({ event, index }: EventCardProps) => {
             )}
             disabled={event.isPast}
           >
-            {event.isPast ? 'Event Ended' : (event.meetupUrl ? 'Join on Meetup' : 'RSVP Now')}
+            {event.isPast ? 'Event Ended' : 'RSVP Now'}
           </Button>
         </div>
       </div>
