@@ -4,7 +4,7 @@ import { Event } from './types';
 export const events: Event[] = [
   {
     id: "2",
-    title: "What Makes a World-Class Designer?",
+    title: "What Makes a World-Class Product Designer?",
     date: "April 3, 2024",
     time: "06:30 PM - 08:00 PM",
     location: "Montpellier, France (TBD)",
@@ -21,7 +21,7 @@ export const events: Event[] = [
   },
   {
     id: "1",
-    title: "What Makes a World-Class Designer?",
+    title: "What Makes a World-Class Product Designer?",
     date: "April 10, 2024", // Updated from April 8 to April 10
     time: "06:30 PM - 08:00 PM",
     location: "Paris, France (TBD)",
