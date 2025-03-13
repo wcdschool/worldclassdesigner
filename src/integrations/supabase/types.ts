@@ -9,7 +9,75 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          bio: string | null
+          created_at: string
+          education: string | null
+          experience_items: Json | null
+          id: string
+          instagram_username: string | null
+          is_admin: boolean
+          is_premium: boolean
+          languages: string[] | null
+          linkedin_username: string | null
+          location: string | null
+          portfolio_items: Json | null
+          portfolio_url: string | null
+          profession: string | null
+          skills: string[] | null
+          updated_at: string
+          username: string | null
+          view_count: number | null
+          years_experience: number | null
+        }
+        Insert: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          education?: string | null
+          experience_items?: Json | null
+          id: string
+          instagram_username?: string | null
+          is_admin?: boolean
+          is_premium?: boolean
+          languages?: string[] | null
+          linkedin_username?: string | null
+          location?: string | null
+          portfolio_items?: Json | null
+          portfolio_url?: string | null
+          profession?: string | null
+          skills?: string[] | null
+          updated_at?: string
+          username?: string | null
+          view_count?: number | null
+          years_experience?: number | null
+        }
+        Update: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          education?: string | null
+          experience_items?: Json | null
+          id?: string
+          instagram_username?: string | null
+          is_admin?: boolean
+          is_premium?: boolean
+          languages?: string[] | null
+          linkedin_username?: string | null
+          location?: string | null
+          portfolio_items?: Json | null
+          portfolio_url?: string | null
+          profession?: string | null
+          skills?: string[] | null
+          updated_at?: string
+          username?: string | null
+          view_count?: number | null
+          years_experience?: number | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
