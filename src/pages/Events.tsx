@@ -35,7 +35,19 @@ const Events = () => {
                     <p><strong>Date:</strong> {event.date}</p>
                     <p><strong>Time:</strong> {event.time}</p>
                     <p><strong>Location:</strong> {event.location}</p>
-                    {event.speaker && (
+                    
+                    {event.speakers && event.speakers.length > 0 ? (
+                      <div>
+                        <p className="font-bold">Speakers:</p>
+                        <ul className="list-disc ml-5 mt-1">
+                          {event.speakers.map((speaker, idx) => (
+                            <li key={idx}>
+                              {speaker.name} - {speaker.title}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : event.speaker && (
                       <p><strong>Speaker:</strong> {event.speaker.name} - {event.speaker.title}</p>
                     )}
                   </div>

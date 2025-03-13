@@ -14,6 +14,16 @@ export const events: Event[] = [
     categories: [],
     isFree: true,
     meetupUrl: "https://www.meetup.com/world-class-designer-montpellier/",
+    speakers: [
+      {
+        name: "Séverine Dousset",
+        title: "Senior Product Designer at Ubisoft"
+      },
+      {
+        name: "Julie Chabin",
+        title: "Ex: Head of Product Design at Product Hunt"
+      }
+    ],
     speaker: {
       name: "Séverine Dousset",
       title: "Senior Product Designer at Ubisoft"

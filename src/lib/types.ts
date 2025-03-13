@@ -11,6 +11,10 @@ export interface Event {
   categories?: string[];
   isFree?: boolean;
   meetupUrl?: string;
+  speakers?: {
+    name: string;
+    title: string;
+  }[];
   speaker?: {
     name: string;
     title: string;

@@ -1,3 +1,4 @@
+
 import { useState, useRef, useEffect } from 'react';
 import { Event } from '@/lib/types';
 import { cn } from '@/lib/utils';
@@ -149,7 +150,30 @@ const EventCard = ({ event, index }: EventCardProps) => {
             <span>{event.location}</span>
           </div>
           
-          {event.speaker && (
+          {event.speakers && event.speakers.length > 0 ? (
+            <div className="space-y-2">
+              <div className="text-gray-500 dark:text-gray-400 font-medium">Speakers:</div>
+              {event.speakers.map((speaker, idx) => (
+                <div key={idx} className="flex items-center text-gray-500 dark:text-gray-400 ml-1">
+                  {speaker.name === "Séverine Dousset" || speaker.name === "Julie Chabin" ? (
+                    <Avatar className="h-6 w-6 mr-2 flex-shrink-0 border border-gray-200 dark:border-gray-700">
+                      <AvatarImage 
+                        src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
+                        alt={speaker.name}
+                      />
+                      <AvatarFallback>{speaker.name.charAt(0)}</AvatarFallback>
+                    </Avatar>
+                  ) : (
+                    <User className="h-4 w-4 mr-2 flex-shrink-0" />
+                  )}
+                  <div>
+                    <span className="font-medium text-black dark:text-white">{speaker.name}</span>
+                    <span className="block text-xs mt-0.5">{speaker.title}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : event.speaker && (
             <div className="flex items-center text-gray-500 dark:text-gray-400">
               {event.speaker.name === "Séverine Dousset" ? (
                 <Avatar className="h-6 w-6 mr-2 flex-shrink-0 border border-gray-200 dark:border-gray-700">
