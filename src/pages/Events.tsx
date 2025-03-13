@@ -39,13 +39,13 @@ const Events = () => {
                     {event.speakers && event.speakers.length > 0 ? (
                       <div>
                         <p className="font-bold">Speakers:</p>
-                        <ul className="list-disc ml-5 mt-1">
+                        <div className="flex flex-wrap gap-x-6 gap-y-2 mt-1">
                           {event.speakers.map((speaker, idx) => (
-                            <li key={idx}>
-                              {speaker.name} - {speaker.title}
-                            </li>
+                            <div key={idx} className="flex items-center">
+                              <span>{speaker.name} - {speaker.title}</span>
+                            </div>
                           ))}
-                        </ul>
+                        </div>
                       </div>
                     ) : event.speaker && (
                       <p><strong>Speaker:</strong> {event.speaker.name} - {event.speaker.title}</p>
