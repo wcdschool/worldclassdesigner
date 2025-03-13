@@ -30,6 +30,10 @@ export const events: Event[] = [
     isPast: false,
     categories: [],
     isFree: true,
-    meetupUrl: "https://www.meetup.com/world-class-designer-paris/"
+    meetupUrl: "https://www.meetup.com/world-class-designer-paris/",
+    speaker: {
+      name: "Séverine Dousset",
+      title: "Senior Product Designer at Ubisoft"
+    }
   }
 ];
