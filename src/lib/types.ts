@@ -14,5 +14,5 @@ export interface Event {
   speaker?: {
     name: string;
     title: string;
-  };
+  } | null;
 }

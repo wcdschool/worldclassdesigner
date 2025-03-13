@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from 'react';
 import { Event } from '@/lib/types';
 import { cn } from '@/lib/utils';
@@ -21,7 +20,6 @@ const EventCard = ({ event, index }: EventCardProps) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const handleRSVP = () => {
-    // Trigger confetti effect
     confetti({
       particleCount: 100,
       spread: 70,
@@ -34,7 +32,6 @@ const EventCard = ({ event, index }: EventCardProps) => {
       description: `You've registered for "${event.title}". We've sent details to your email.`,
     });
     
-    // If there's a meetup URL, open it in a new tab
     if (event.meetupUrl) {
       window.open(event.meetupUrl, '_blank', 'noopener,noreferrer');
     }
@@ -46,7 +43,7 @@ const EventCard = ({ event, index }: EventCardProps) => {
         if (entry.isIntersecting) {
           setTimeout(() => {
             setIsVisible(true);
-          }, index * 100); // Staggered animation
+          }, index * 100);
           observer.unobserve(entry.target);
         }
       },
@@ -64,7 +61,6 @@ const EventCard = ({ event, index }: EventCardProps) => {
     };
   }, [index]);
 
-  // Fallback image for when the main image fails to load
   const fallbackImage = 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80';
   
   const handleImageError = () => {
@@ -72,7 +68,6 @@ const EventCard = ({ event, index }: EventCardProps) => {
     setImageError(true);
   };
 
-  // Determine which image URL to use
   const imageUrl = imageError || !event.image ? fallbackImage : event.image;
 
   return (
@@ -96,7 +91,7 @@ const EventCard = ({ event, index }: EventCardProps) => {
             isHovered ? "scale-105" : "scale-100"
           )}
           onError={handleImageError}
-          style={{ display: 'none' }} // Hidden image to preload and check for errors
+          style={{ display: 'none' }}
         />
         <div 
           className={cn(
@@ -106,7 +101,6 @@ const EventCard = ({ event, index }: EventCardProps) => {
           style={{ backgroundImage: `url(${imageUrl})` }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent">
-          {/* Location tag */}
           {event.location.includes("Paris") && (
             <div className="absolute top-3 left-3 flex items-center bg-black/70 text-white px-2 py-1 rounded-full text-xs font-medium">
               <MapPin className="h-3 w-3 mr-1" />
@@ -120,7 +114,6 @@ const EventCard = ({ event, index }: EventCardProps) => {
             </div>
           )}
           
-          {/* Free badge */}
           {event.isFree && (
             <div className="absolute top-3 right-3">
               <Badge variant="default" className="bg-green-500 hover:bg-green-600">Free</Badge>
@@ -128,7 +121,6 @@ const EventCard = ({ event, index }: EventCardProps) => {
           )}
         </div>
         
-        {/* Categories */}
         <div className="absolute bottom-3 left-3 flex flex-wrap gap-2">
           {event.categories?.map((category) => (
             <Badge key={category} variant="secondary" className="text-xs font-normal bg-black/70 text-white dark:bg-white/10">
@@ -159,7 +151,7 @@ const EventCard = ({ event, index }: EventCardProps) => {
           
           {event.speaker && (
             <div className="flex items-center text-gray-500 dark:text-gray-400">
-              {event.speaker.name === "Julie Chabin" ? (
+              {event.speaker.name === "Séverine Dousset" ? (
                 <Avatar className="h-6 w-6 mr-2 flex-shrink-0 border border-gray-200 dark:border-gray-700">
                   <AvatarImage 
                     src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 

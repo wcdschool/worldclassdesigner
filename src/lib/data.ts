@@ -7,7 +7,7 @@ export const events: Event[] = [
     title: "What Makes a World-Class Product Designer?",
     date: "April 3, 2025",
     time: "06:30 PM - 08:00 PM",
-    location: "Montpellier, France (TBD)",
+    location: "La Panacée, 14 Rue de l'École de Pharmacie, 34000 Montpellier",
     description: "Join us for our inaugural World Class Designer meetup in Montpellier! We'll explore what separates good designers from truly exceptional ones through insightful discussions, practical examples, and networking opportunities with local design professionals.",
     image: "/lovable-uploads/ce83ed9e-7892-4dca-94a5-95c15e115704.png",
     isPast: false,
@@ -15,8 +15,8 @@ export const events: Event[] = [
     isFree: true,
     meetupUrl: "https://www.meetup.com/world-class-designer-montpellier/",
     speaker: {
-      name: "Julie Chabin",
-      title: "Ex: Head of Product Design at Product Hunt"
+      name: "Séverine Dousset",
+      title: "Senior Product Designer at Ubisoft"
     }
   },
   {
@@ -31,9 +31,6 @@ export const events: Event[] = [
     categories: [],
     isFree: true,
     meetupUrl: "https://www.meetup.com/world-class-designer-paris/",
-    speaker: {
-      name: "Séverine Dousset",
-      title: "Senior Product Designer at Ubisoft"
-    }
+    speaker: null
   }
 ];
