@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Event } from '@/lib/types';
 import EventCard from './EventCard';
+import {useIsMobile} from '@/hooks/use-mobile';
 
 interface EventSectionProps {
   title: string;
@@ -13,6 +14,7 @@ interface EventSectionProps {
 
 const EventSection = ({ title, subtitle, events, id }: EventSectionProps) => {
   const [isVisible, setIsVisible] = useState(false);
+  const isMobile = useIsMobile();
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -36,10 +38,14 @@ const EventSection = ({ title, subtitle, events, id }: EventSectionProps) => {
   }, [id]);
   
   return (
-    <section id={id} className="py-12 scroll-mt-24">
+    <section id={id} className={cn(
+      "scroll-mt-24",
+      isMobile ? "py-12" : "py-16"
+    )}>
       <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div className={cn(
-          "mb-6 transition-all duration-700", 
+          "transition-all duration-700",
+          isMobile ? "mb-6" : "mb-12",
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         )}>
           <div>
