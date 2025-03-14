@@ -7,9 +7,12 @@ import EventSection from '@/components/EventSection';
 import Footer from '@/components/Footer';
 import { events } from '@/lib/data';
 import { Event } from '@/lib/types';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { cn } from '@/lib/utils';
 
 const Index = () => {
   const upcomingEvents = events.filter((event: Event) => !event.isPast);
+  const isMobile = useIsMobile();
   
   const scrollButtonRef = useRef<HTMLButtonElement>(null);
   
@@ -41,7 +44,10 @@ const Index = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       
-      <div className="bg-background pt-12 md:pt-12 flex-grow">
+      <div className={cn(
+        "bg-background flex-grow",
+        isMobile ? "pt-[48px]" : "pt-12 md:pt-12"
+      )}>
         <EventSection 
           id="upcoming"
           title="Upcoming Events" 
