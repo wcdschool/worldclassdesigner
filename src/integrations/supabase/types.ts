@@ -9,18 +9,92 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      notification_settings: {
+        Row: {
+          email_daily: boolean
+          email_realtime: boolean
+          email_weekly: boolean
+          id: string
+          notify_likes: boolean
+          notify_views: boolean
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          email_daily?: boolean
+          email_realtime?: boolean
+          email_weekly?: boolean
+          id?: string
+          notify_likes?: boolean
+          notify_views?: boolean
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          email_daily?: boolean
+          email_realtime?: boolean
+          email_weekly?: boolean
+          id?: string
+          notify_likes?: boolean
+          notify_views?: boolean
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      notifications: {
+        Row: {
+          actor_avatar_url: string | null
+          actor_id: string | null
+          actor_name: string | null
+          created_at: string
+          id: string
+          is_anonymous: boolean | null
+          message: string | null
+          read: boolean | null
+          recipient_id: string
+          type: string
+        }
+        Insert: {
+          actor_avatar_url?: string | null
+          actor_id?: string | null
+          actor_name?: string | null
+          created_at?: string
+          id?: string
+          is_anonymous?: boolean | null
+          message?: string | null
+          read?: boolean | null
+          recipient_id: string
+          type: string
+        }
+        Update: {
+          actor_avatar_url?: string | null
+          actor_id?: string | null
+          actor_name?: string | null
+          created_at?: string
+          id?: string
+          is_anonymous?: boolean | null
+          message?: string | null
+          read?: boolean | null
+          recipient_id?: string
+          type?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
           bio: string | null
           created_at: string
           education: string | null
+          email: string | null
           experience_items: Json | null
           id: string
           instagram_username: string | null
           is_admin: boolean
           is_premium: boolean
           languages: string[] | null
+          like_count: number | null
           linkedin_username: string | null
           location: string | null
           portfolio_items: Json | null
@@ -37,12 +111,14 @@ export type Database = {
           bio?: string | null
           created_at?: string
           education?: string | null
+          email?: string | null
           experience_items?: Json | null
           id: string
           instagram_username?: string | null
           is_admin?: boolean
           is_premium?: boolean
           languages?: string[] | null
+          like_count?: number | null
           linkedin_username?: string | null
           location?: string | null
           portfolio_items?: Json | null
@@ -59,12 +135,14 @@ export type Database = {
           bio?: string | null
           created_at?: string
           education?: string | null
+          email?: string | null
           experience_items?: Json | null
           id?: string
           instagram_username?: string | null
           is_admin?: boolean
           is_premium?: boolean
           languages?: string[] | null
+          like_count?: number | null
           linkedin_username?: string | null
           location?: string | null
           portfolio_items?: Json | null

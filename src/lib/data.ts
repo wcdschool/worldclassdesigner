@@ -41,6 +41,12 @@ export const events: Event[] = [
     categories: [],
     isFree: true,
     meetupUrl: "https://www.meetup.com/world-class-designer-paris/",
+    speakers: [
+      {
+        name: "Antoine Valot",
+        title: "Ex: Chief Customer Officer at CustomerOS"
+      }
+    ],
     speaker: null
   }
 ];
