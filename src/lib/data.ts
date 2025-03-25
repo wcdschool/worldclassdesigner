@@ -40,7 +40,7 @@ export const events: Event[] = [
     isPast: false,
     categories: [],
     isFree: true,
-    meetupUrl: "https://www.meetup.com/world-class-designer-paris/",
+    meetupUrl: "https://www.meetup.com/world-class-designer-paris/events/306905892/?utm_medium=referral&utm_campaign=share-btn_savedevents_share_modal&utm_source=link",
     speakers: [
       {
         name: "Antoine Valot",
