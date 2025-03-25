@@ -81,6 +81,38 @@ export type Database = {
         }
         Relationships: []
       }
+      profile_engagement: {
+        Row: {
+          created_at: string
+          id: string
+          profile_id: string
+          type: string
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          profile_id: string
+          type: string
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          profile_id?: string
+          type?: string
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "profile_engagement_profile_id_fkey"
+            columns: ["profile_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -92,7 +124,6 @@ export type Database = {
           id: string
           instagram_username: string | null
           is_admin: boolean
-          is_premium: boolean
           languages: string[] | null
           like_count: number | null
           linkedin_username: string | null
@@ -103,6 +134,7 @@ export type Database = {
           skills: string[] | null
           updated_at: string
           username: string | null
+          username_slug: string | null
           view_count: number | null
           years_experience: number | null
         }
@@ -116,7 +148,6 @@ export type Database = {
           id: string
           instagram_username?: string | null
           is_admin?: boolean
-          is_premium?: boolean
           languages?: string[] | null
           like_count?: number | null
           linkedin_username?: string | null
@@ -127,6 +158,7 @@ export type Database = {
           skills?: string[] | null
           updated_at?: string
           username?: string | null
+          username_slug?: string | null
           view_count?: number | null
           years_experience?: number | null
         }
@@ -140,7 +172,6 @@ export type Database = {
           id?: string
           instagram_username?: string | null
           is_admin?: boolean
-          is_premium?: boolean
           languages?: string[] | null
           like_count?: number | null
           linkedin_username?: string | null
@@ -151,6 +182,7 @@ export type Database = {
           skills?: string[] | null
           updated_at?: string
           username?: string | null
+          username_slug?: string | null
           view_count?: number | null
           years_experience?: number | null
         }
@@ -161,6 +193,22 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      generate_unique_username_slug: {
+        Args: {
+          username: string
+        }
+        Returns: string
+      }
+      get_filtered_profiles: {
+        Args: {
+          disciplines?: string[]
+          locations?: string[]
+          category?: string
+          limit_count?: number
+          offset_value?: number
+        }
+        Returns: Record<string, unknown>
+      }
       is_admin: {
         Args: Record<PropertyKey, never>
         Returns: boolean

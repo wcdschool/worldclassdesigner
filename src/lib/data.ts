@@ -34,7 +34,7 @@ export const events: Event[] = [
     title: "What Makes a World-Class Product Designer?",
     date: "April 10, 2025",
     time: "06:30 PM - 08:00 PM",
-    location: "Paris, France (TBD)",
+    location: "The Crocodile, 6 Rue Royer-Collard, 75005 Paris",
     description: "Join us for an insightful discussion on the qualities, skills, and mindset that separate good designers from truly world-class ones.",
     image: "/lovable-uploads/2ae50675-6df3-48bd-960e-68463cd0d3cf.png",
     isPast: false,
