@@ -209,9 +209,23 @@ export type Database = {
         }
         Returns: Record<string, unknown>
       }
+      get_policies_for_bucket: {
+        Args: {
+          bucket_name: string
+        }
+        Returns: {
+          policy_name: string
+          action: string
+          condition: string
+        }[]
+      }
       is_admin: {
         Args: Record<PropertyKey, never>
         Returns: boolean
+      }
+      ping: {
+        Args: Record<PropertyKey, never>
+        Returns: Json
       }
     }
     Enums: {

@@ -45,6 +45,10 @@ export const events: Event[] = [
       {
         name: "Antoine Valot",
         title: "Ex: Chief Customer Officer at CustomerOS"
+      },
+      {
+        name: "Adil Mhira",
+        title: "Head of Design at Renault Group"
       }
     ],
     speaker: null
